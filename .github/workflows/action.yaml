@@ -1,13 +1,16 @@
-name: "Hello World"
-description: "Greet someone and record the time"
-inputs:
-  who-to-greet:
-    description: "Who to greet"
-    required: true
-    default: "World"
-outputs:
-  time:
-    description: "The time"
-runs:
-  using: "python"
-  
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    - name: hello world action step
+      id: hello
+      uses: ./
+      with:
+        who-to-greet: "Chad Crowed"
+    -name: Get the output time
+      run: echo "The output time is ${{ steps.hello.outputs.time}}
