@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - name: checkout
+    - name: Checkout
       uses: actions/checkout@v2
-    - name: hello world action step
+    - name: Hello world action step
       id: hello
       uses: ./
       with:
         who-to-greet: "Chad Crowed"
     -name: Get the output time
-      run: echo "The output time is ${{ steps.hello.outputs.time}}"
+      run: echo "The output time is ${{ steps.hello.outputs.time }}"
