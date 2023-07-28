@@ -1,6 +1,6 @@
-name: "Hello World"
-on: push
-
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
 jobs:
   init:
     runs-on: self-hosted
