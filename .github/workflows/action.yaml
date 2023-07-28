@@ -1,9 +1,8 @@
 name: "Hello World"
-description: "Greet someone and record the time"
 on: push
 
 jobs:
   init:
     runs-on: self-hosted
     steps:
-      - run: echo 'CloudGuru'
+      - run: echo 'Cloud Guru'
