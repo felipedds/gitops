@@ -1,8 +1,28 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   init:
     runs-on: self-hosted
     steps:
-      - run: echo 'Cloud Guru'
+      - run: echo 'INIT'
+  build:
+    runs-on: self-hosted
+    steps:
+      - run: echo 'BUILD'
+      - name: Check out code
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+      - name: Install libraries
+        run:
+            cd function
+            python -m pip install --upgrade pip
+            if [ -f requirements.txt]; then pip install -r requirements.txt -t .; fi
+      - name: Archive artifact
+        run: |
+            cd function
+            zip -r ../${{ github.sha }}.zip .
